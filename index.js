@@ -75,8 +75,8 @@ function temperatureCtoF(tempCelsius) {
  * 
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(/* code here */) {
-  /* code here */
+function temperatureInF(tempFahrenheit) {
+  
 }
 
 
@@ -96,8 +96,13 @@ function temperatureInF(/* code here */) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject() {
+  const person = {
+    id: "id",
+    name: "name",
+    email: "email"
+  }
+  return person;
 }
 
 /**
