@@ -75,11 +75,14 @@ function temperatureCtoF(tempCelsius) {
  * 
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(tempFahrenheit) {
-  
+function temperatureInF(temp, unit) {
+  if (unit==="F") {
+    return temp+"F";
+  } else {
+    let cel = temperatureCtoF(temp);
+    return cel+"F";
+  }
 }
-
-
 /**
  * ### Challenge `makePersonObject`
  * 
@@ -96,11 +99,11 @@ function temperatureInF(tempFahrenheit) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject() {
+function makePersonObject(id, name, email) {
   const person = {
-    id: "id",
-    name: "name",
-    email: "email"
+    id: id,
+    name: name,
+    email: email
   }
   return person;
 }
@@ -118,10 +121,9 @@ function makePersonObject() {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
+function getName(object) {
+  return `Hello my name is ${object.name}`;
 }
-
 
 /**
  * ### Challenge `appleIndex`
@@ -138,8 +140,11 @@ function getName(/* code here */) {
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
-  /* code here */
+function appleIndex(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let position = arr.indexOf("apple");
+    return position;
+  }
 }
 
 /**
@@ -157,8 +162,20 @@ function appleIndex(/* code here */) {
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(arr) {
+
+  let appleCheck = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    
+    if (arr[i] === "apple"){
+      appleCheck.push(true);
+    } else {
+      appleCheck.push(false);
+    }
+
+  }// end of for loop
+  return appleCheck;
 }
 
 
