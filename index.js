@@ -35,8 +35,8 @@ function addNumbers(num1, num2) {
  * the returned value should look like: 'Goodbye, Andy. Have a great day.'
  * 
 */
-function sayGoodbye(/* code here */) {
-  /* code here */
+function sayGoodbye(name) {
+  return `Goodbye, ${name}. Have a great day.`;
 }
 
 /**
@@ -53,8 +53,9 @@ function sayGoodbye(/* code here */) {
  * Hint 1: The formula for converting celsius to fahrenheit is t*9/5 + 32 where t is the temperature in celsius.
  * Hint 2: There is a very easy way to round numbers in JS. Do a google search to find out how. 
 */
-function temperatureCtoF(/* code here */) {
-  /* code here */
+function temperatureCtoF(tempCelsius) {
+  let fahrenheit = Math.round (tempCelsius * 9 / 5 + 32);
+  return fahrenheit;
 }
 
 /**
@@ -74,11 +75,14 @@ function temperatureCtoF(/* code here */) {
  * 
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(/* code here */) {
-  /* code here */
+function temperatureInF(temp, unit) {
+  if (unit==="F") {
+    return temp+"F";
+  } else {
+    let cel = temperatureCtoF(temp);
+    return cel+"F";
+  }
 }
-
-
 /**
  * ### Challenge `makePersonObject`
  * 
@@ -95,8 +99,13 @@ function temperatureInF(/* code here */) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject(id, name, email) {
+  const person = {
+    id: id,
+    name: name,
+    email: email
+  }
+  return person;
 }
 
 /**
@@ -112,10 +121,9 @@ function makePersonObject(/* code here */) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
+function getName(object) {
+  return `Hello my name is ${object.name}`;
 }
-
 
 /**
  * ### Challenge `appleIndex`
@@ -132,8 +140,11 @@ function getName(/* code here */) {
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
-  /* code here */
+function appleIndex(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let position = arr.indexOf("apple");
+    return position;
+  }
 }
 
 /**
@@ -151,8 +162,20 @@ function appleIndex(/* code here */) {
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(arr) {
+
+  let appleCheck = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    
+    if (arr[i] === "apple"){
+      appleCheck.push(true);
+    } else {
+      appleCheck.push(false);
+    }
+
+  }// end of for loop
+  return appleCheck;
 }
 
 
@@ -210,7 +233,9 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  let deal = inventory[index];
+
+  return `The is a ${deal.car_make} ${deal.car_model}`
 }
 
 /**
@@ -224,8 +249,13 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(lastCarArr) {
+  //We need to find the last item in the array
+  let lastIndex = lastCarArr.length -1;
+
+  let lastCar = lastCarArr[lastIndex];
+
+  return `This is a ${lastCar.car_make} ${lastCar.car_model}`;
 }
 
 /**
@@ -237,8 +267,14 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(arr) {
+  const carArray = []; //Start by creating empty array(sorta like a box)
+
+  for (let i = 0; i < arr.length; i++) { //we are looping through our database
+    let carYear = arr[i].car_year; //Picking specific information from the database
+    carArray.push(carYear); // Placing that specific info inside of our empty array (box)
+  }
+  return carArray; //returns a box full of content (the car years)
 }
 
 /**
